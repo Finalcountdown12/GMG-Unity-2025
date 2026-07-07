@@ -42,8 +42,8 @@ public class Move : Physics2DObject
 		}
 		else if (typeOfControl == Enums.KeyGroups.WASD)
 		{
-			moveHorizontal = Input.GetAxis("Horizontal2");
-			moveVertical = Input.GetAxis("Vertical2");
+			moveHorizontal = Input.GetAxis("Horizontal");
+			moveVertical = Input.GetAxis("Vertical");
 		}
         //#endif
     
