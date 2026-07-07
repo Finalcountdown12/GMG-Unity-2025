@@ -21,6 +21,7 @@ public class Move : Physics2DObject
 	private Vector3 movement, cachedDirection;
 	private float moveHorizontal;
 	private float moveVertical;
+	private SpriteRenderer spriteRenderer;
 
     //Animations
     public Animator animator;
@@ -29,6 +30,8 @@ public class Move : Physics2DObject
     {
         animator = GetComponent<Animator>();
         Debug.Log(animator);
+		animator = GetComponent<Animator>();
+		spriteRenderer = GetComponent<SpriteRenderer>();
     }
     // Update gets called every frame
     void Update ()
@@ -46,6 +49,13 @@ public class Move : Physics2DObject
 			moveVertical = Input.GetAxis("Vertical");
 		}
         //#endif
+
+		if (moveHorizontal > 0){
+			spriteRenderer.flipX = false;
+		}
+		else if (moveHorizontal < 0){
+			spriteRenderer.flipX = true;
+		}
     
         //zero-out the axes that are not needed, if the movement is constrained
         switch(movementType)
@@ -64,14 +74,14 @@ public class Move : Physics2DObject
 
 		//rotate the GameObject towards the direction of movement
 		//the axis to look can be decided with the "axis" variable
-		if(orientToDirection)
+		/*if(orientToDirection)
 		{
 			if(movement.sqrMagnitude >= 0.01f)
 			{
 				cachedDirection = movement;
 			}
 			Utils.SetAxisTowards(lookAxis, transform, cachedDirection);
-		}
+		}*/
 	}
 
 
